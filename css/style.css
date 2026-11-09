@@ -33,7 +33,11 @@ body {
   background-color: var(--secondary);
 }
 
-img { max-width: 100%; display: block; }
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
 h1, h2, h3 {
   font-family: var(--font-heading);
@@ -524,6 +528,12 @@ h2 { font-size: clamp(1.55rem, 3vw, 2.15rem); }
 p { max-width: 75ch; }
 
 main { min-height: 50vh; }
+
+/* Defer painting of sections below the first viewport on long pages. */
+main > .section:not(.hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 480px;
+}
 
 .nav-list a:focus-visible,
 .btn:focus-visible,
